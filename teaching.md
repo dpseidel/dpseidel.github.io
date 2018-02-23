@@ -14,7 +14,7 @@ as they see fit, and I would be delighted to hear from anyone with suggestions r
 
 
 ## Recent Graduate Student Instruction:
-### ESPM-288: [Reproducible and Collaborative Data Science](https://espm-288.carlboettiger.info)
+### [ESPM-288](https://espm-288.carlboettiger.info): Reproducible and Collaborative Data Science
 
 - Teaching: Spring 2018
 - Professor: [Carl Boettiger](https://www.twitter.com/cboettig)
@@ -25,7 +25,7 @@ for the 21st Century**](http://ds421.berkeley.edu) and other interested
 students in ecological, environmental or social science programs. This course is taught with an 
 emphasis on using tidyverese in R, Rstudio, TravisCI, Git, & Github_
 
-### ESPM-157: [Data Science & Global Change Ecology](https://espm-157.carlboettiger.info/) 
+### [ESPM-157](https://espm-157.carlboettiger.info/): Data Science & Global Change Ecology 
 
 - Taught: Fall 2017
 - Professor: [Carl Boettiger](https://www.twitter.com/cboettig)
