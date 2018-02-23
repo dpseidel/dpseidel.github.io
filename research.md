@@ -6,9 +6,11 @@ subtitle: The work side of work/life balance
 
 Generally, my research focuses on the movement of large mammals and their diseases, especially those with environmental reservoirs. My primary system of investigation is anthrax in populations of African Elephant and zebra within Etosha National Park, Namibia. 
 
-From 2015-2017, I was a fellow with a [NSF NRT project: Data Science for the 21st Century](http://ds421.berkeley.edu/) at Berkeley, training data scientists to analyse the social-environmental problems prompted by our rapidly changing global climate. I continue to [teach](https://dpseidel.github.io/teaching) with the program.
+<p align="center"><img src="https://dpseidel.github.io/img/elephants.jpg"/></p>
 
-In the summer of 2016, I worked as a Quantitative Analyst Intern with the Geo Data Analytics team at Google Maps. It was a great opportunity to apply spatial statistics expertise and hone my data science skills in a totally different realm. 
+From 2015-2017, I was a fellow with a NSF NRT project [Data Science for the 21st Century](http://ds421.berkeley.edu/) at Berkeley, training data scientists to analyse the social-environmental problems prompted by our rapidly changing global climate. I continue to [teach](https://dpseidel.github.io/teaching) with the program.
+
+In the summer of 2016, I worked as a Quantitative Analyst Intern with the Geo Data Analytics team at Google Maps. It was a great opportunity to apply my spatial statistics expertise and hone my data science skills in a totally different realm. 
 
 <p align="center"><img src="https://dpseidel.github.io/img/map.jpg"/></p>
 

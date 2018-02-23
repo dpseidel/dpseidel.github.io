@@ -4,12 +4,12 @@ title: Teaching
 subtitle: When people pay me to share what I know. 
 ---
 
-## [Movement Ecology Workshop in R](http://dpseidel.github.io/MovEco-R-Workshop)
+## Movement Ecology Workshop in R 
 
 In January 2018, my colleague [Eric Dougherty](https://ourenvironment.berkeley.edu/people/eric-dougherty) and I were invited to lead an 8-day workshop focused on
 analysis of movement data in R. This was an exciting opportunity and we worked hard to pull together resources to cover with a broad brush everything from the basics of loading a
 shapefile in R all the way to simulating movement paths. All resources and code are hosted in a [public repository](https://github.com/dpseidel/MovEco-R-Workshop) 
-and on an associated website. I sincerely hope these resources can be of use to other instructors and researchers. People should feel welcome to use the repository and code 
+and on an associated [website](http://dpseidel.github.io/MovEco-R-Workshop). I sincerely hope these resources can be of use to other instructors and researchers. People should feel welcome to use the repository and code 
 as they see fit, and I would be delighted to hear from anyone with suggestions regarding organization or new topics that are of interest. 
 
 
