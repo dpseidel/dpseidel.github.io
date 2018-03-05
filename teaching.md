@@ -37,7 +37,7 @@ in global change ecology. This course is taught with an emphasis on using tidyve
 
 ### ESPM-173: Introduction to Analysis of Ecological Data
 
-- Taught: Fall 2016
+- Taught: Fall 2015
 - Professor: [Perry de Valpine](https://nature.berkeley.edu/~pdevalpine/)
 
 _This is an upper-division undergraduate course designed to introduce CNR majors to the fundamentals
