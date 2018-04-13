@@ -4,7 +4,7 @@ title: Teaching
 subtitle: When people pay me to share what I know. 
 ---
 
-## Movement Ecology Workshop in R 
+## HKU: Movement Ecology Workshop in R 
 
 In January 2018, my colleague [Eric Dougherty](https://ourenvironment.berkeley.edu/people/eric-dougherty) and I were invited to lead an 8-day workshop focused on
 analysis of movement data in R. This was an exciting opportunity and we worked hard to pull together resources to cover with a broad brush everything from the basics of loading a
