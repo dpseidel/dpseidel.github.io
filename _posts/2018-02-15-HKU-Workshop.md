@@ -11,5 +11,5 @@ Last month,  my colleague Eric and I were invited to lead a workshop teaching mo
 ecology methods in R! This week I finally got a proper website built to show it off!
 I hope others find the resources useful. It was an amazing opportunity and I had 
 a wonderful time preparing and presenting these materials. 
-See our [website](danaseidel.com/MovEco-R-Workshop) for
+See our [website](https://www.danaseidel.com/MovEco-R-Workshop) for
 more information and all the materials! 
