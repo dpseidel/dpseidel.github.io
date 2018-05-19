@@ -35,11 +35,11 @@ navbar-links:
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
-# avatar: "/img/avatar-icon.png"
+# avatar: "/img/headshot.jpg"
 
 # If you want to have an image logo in the top-left corner instead of the title text,
 # then specify the following parameter
-# title-img: /path/to/image
+# title-img: /img/headshot.jpg
 
 # --- Background colour/image options --- #
 
@@ -58,9 +58,9 @@ footer-link-col: "#595959"
 # Alternatively, the navbar, footer, and page background can be set to use background images
 # instead of colour
 
-#navbar-img: "/img/HMB.jpg"
+#navbar-img: "/img/sand.jpg"
 #footer-img: "/img/HMB.jpg"
-# page-img: "/img/bgimage.png"
+# page-img: "/img/sand.jpg"
 
 # --- Footer options --- #
 

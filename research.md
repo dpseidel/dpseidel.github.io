@@ -6,7 +6,7 @@ subtitle: The work side of work/life balance
 
 :star: **Personal Announcement!:** This summer I'll be working at RStudio as an intern on the ggplot2 package! I'm excited to expand my development skills and get my hands dirty maintaining a package used by so many! :star:
 
-Generally, my research focuses on the movement of large mammals and their diseases, especially those with environmental reservoirs. My primary system of investigation is anthrax in populations of African Elephant and zebra within Etosha National Park, Namibia. 
+Generally, my research focuses on the movement of large mammals and their diseases, especially those with environmental reservoirs. My primary system of investigation is anthrax in populations of African elephant and zebra within Etosha National Park, Namibia. 
 
 <p align="center"><img src="https://dpseidel.github.io/img/elephants.jpg"/></p>
 

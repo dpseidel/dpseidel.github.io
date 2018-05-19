@@ -1,27 +1,48 @@
 ---
 layout: page
 title: Dana Paige Seidel
-subtitle: <br/> movement ecologist, data lover, R enthusiast <br/>
+subtitle: Welcome to my personal website and blog!
+bigimg:
+  - 'img/R.jpg'
 use-site-title: true
 ---
+<!-- Typed.js --> 
+<script src="/js/jquery-1.11.2.min.js"></script>
+<script src="/js/typed.js" type="text/javascript"></script>
+<script>
+  $(function(){
+    $(".typed").typed({
+      strings: ["academia.", "data visualization.", "R.", "teaching.", "data science."],
+      typeSpeed: 85,
+      loop: true,
+      backDelay: 1000
+    });
+  });
+</script>
 
-<div class="text-center">
-  <img src="{{ site.baseurl }}/img/headshot.jpg" />
+<div class="typed-js-hide">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="text-center">
+          <h1>I write about <span class="typed" style="color:#890000";></span></h1>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-<!-- commenting out blog posts for the moment
+<!-- site body (untouched)--> 
 <div class="posts-list">
   {% for post in paginator.posts %}
   <article class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
-	  <h2 class="post-title">{{ post.title }}</h2>
+    <h23 class="post-title">{{ post.title }}</h2>
 
-	  {% if post.subtitle %}
-	  <h3 class="post-subtitle">
-	    {{ post.subtitle }}
-	  </h3>
-	  {% endif %}
+    {% if post.subtitle %}
+    <h2 class="post-subtitle">
+      {{ post.subtitle }}
+    </h2>
+    {% endif %}
     </a>
 
     <p class="post-meta">
@@ -60,8 +81,7 @@ use-site-title: true
 
    </article>
   {% endfor %}
-</div> 
---!>
+</div>
 
 {% if paginator.total_pages > 1 %}
 <ul class="pager main-pager">
