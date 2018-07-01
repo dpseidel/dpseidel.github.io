@@ -23,6 +23,9 @@ description: Home Page
 
 # List of links in the navigation bar
 navbar-links:
+  Blog:
+    - Posts: "index"
+    - Tags: "tags"
   About Me: "aboutme"
   Project Experience: "research"
   Teaching: "teaching"
