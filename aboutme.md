@@ -5,7 +5,7 @@ title: About me
 
 <p align="center"><img src="https://dpseidel.github.io/img/profile.png"/></p>
 
-Hi Everyone! My name is Dana Paige Seidel. I respond to "Dana" and use she/her pronouns. I am a 4th year PhD Candidate at UC Berkeley in the [Getz Lab](https://nature.berkeley.edu/getzlab) studying the movement of large mammals (think deer, zebra, and elephants) and the spread of disease. Professionally, I fancy myself a bio-statistician, a data scientist, and a part-time educator. Personally, I just love solving puzzles and other people's knotty technical problems. For more information on my research, mosey on over to my [Project Experience](https://dpseidel.github.io/research/) tab.
+Hi Everyone! My name is Dana Paige Seidel. I respond to "Dana" and use she/her pronouns. I am a 5th year PhD Candidate at UC Berkeley in the [Getz Lab](https://nature.berkeley.edu/getzlab) studying the movement of large mammals (think deer, zebra, and elephants) and the spread of disease. Professionally, I fancy myself a bio-statistician, a data scientist, and a part-time educator. Personally, I just love solving puzzles and other people's knotty technical problems. For more information on my research, mosey on over to my [Project Experience](https://www.danaseidel.com/research/) tab.
 
 ## My Past
 
@@ -13,7 +13,7 @@ I grew up all around the central time zone and went to college in New York state
 
 ## My Future
 
-If all goes as planned, I'll be graduating with my Ph.D. as of December 2018 and looking for a new full time position in applied statistics or data science, to start January 2019. I'm especially keen to find a position where I can apply my spatial statistics experience. If you have a tip for me, would like to hire me, or would just like to wish me luck, please <a href="mailto:dana.seidel@gmail.com">contact me</a>. Those interested can view and download my resume [here](https://dpseidel.github.io/resume.pdf).
+I'll be graduating with my Ph.D. in May 2019 and am looking for a new full time position in applied statistics or data science, to start in summer/fall 2019. I'm especially keen to find a position where I can apply my spatial statistics experience. If you have a tip for me, would like to hire me, or would just like to wish me luck, please <a href="mailto:dana.seidel@gmail.com">contact me</a>. Those interested can view and download my resume [here](https://www.danaseidel.com/resume.pdf).
 
 
 
