@@ -30,7 +30,7 @@ to take on related issues; thus, over my summer in ggplot2, I primarily worked
 in three areas: scales, themes, and on the secondary axis\**. 
 
 <table class="image">
-<caption align="bottom"> 3 out of 5: interns Irene Steves, Fanny Chow, and Me after Fanny's August RLadiesSF talk! <br/> (Photo Cred: Gabriela de Quieroz)</caption>
+<caption align="bottom"> 3 out of 5: interns Irene Steves, Fanny Chow, and Me after Fanny's August RLadiesSF talk! <br/> (Photo Cred: Gabriela de Queiroz)</caption>
 <tr><td><img src="../img/interns.jpg"></td></tr>
 </table>
 
