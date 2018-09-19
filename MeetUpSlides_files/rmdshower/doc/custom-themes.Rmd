@@ -1,7 +1,7 @@
 ---
 title: "Creating Custom rmdshower Themes"
 author: "Gábor Csárdi"
-date: "`r Sys.Date()`"
+#date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Creating Custom rmdshower Themes}

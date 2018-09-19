@@ -1,7 +1,7 @@
 ---
 title: "My Summer @ Rstudio & an intro to the scales pkg"
 author: "Dana Seidel"
-date: "09/19/2018"
+#date: "09/19/2018"
 output:
   rmdshower::shower_presentation:
     self_contained: false
@@ -420,4 +420,4 @@ Slides available at [danaseidel.com/MeetUpSlides](https://www.danaseidel.com/Mee
 
 For the raw .Rmd for these slides, see [here](https://github.com/dpseidel/dpseidel.github.io/blob/master/MeetUpSlides.Rmd){target="_blank"}.
 
-For the adapted css code for this <font color="#96049b">#Rladies</font> theme, see [here](https://github.com/dpseidel/dpseidel.github.io/blob/master/MeetUpSlides_files/shower-ribbon/package/styles/screen-16x10.css){target="_blank"}.
+For the adapted css code for this <font color="#96049b">#Rladies</font> theme, see [here](https://github.com/dpseidel/dpseidel.github.io/blob/master/MeetUpSlides_files/shower-material/package/styles/screen-16x10.css){target="_blank"}.
