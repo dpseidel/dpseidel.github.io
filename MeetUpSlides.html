@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Summer @ Rstudio &amp; an intro to the scales pkg</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="MeetUpSlides_files/shower-material/package/styles/screen-16x10.css">
+  <link rel="stylesheet" href="MeetUpSlides_files\rmdshower/style-common.css">
+  <link rel="stylesheet" href="MeetUpSlides_files\rmdshower/style-material.css">
+  <link rel="stylesheet" href="MeetUpSlides_files/shower-material/style-override.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="MeetUpSlides_files\rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+    <style type="text/css">
+   div.sourceCode { overflow-x: auto; }
+   table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+     margin: 0; padding: 0; vertical-align: baseline; border: none; }
+   table.sourceCode { width: 100%; line-height: 100%; }
+   td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+   td.sourceCode { padding-left: 5px; }
+   code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+   code > span.dt { color: #902000; } /* DataType */
+   code > span.dv { color: #40a070; } /* DecVal */
+   code > span.bn { color: #40a070; } /* BaseN */
+   code > span.fl { color: #40a070; } /* Float */
+   code > span.ch { color: #4070a0; } /* Char */
+   code > span.st { color: #4070a0; } /* String */
+   code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+   code > span.ot { color: #007020; } /* Other */
+   code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+   code > span.fu { color: #06287e; } /* Function */
+   code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+   code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+   code > span.cn { color: #880000; } /* Constant */
+   code > span.sc { color: #4070a0; } /* SpecialChar */
+   code > span.vs { color: #4070a0; } /* VerbatimString */
+   code > span.ss { color: #bb6688; } /* SpecialString */
+   code > span.im { } /* Import */
+   code > span.va { color: #19177c; } /* Variable */
+   code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+   code > span.op { color: #666666; } /* Operator */
+   code > span.bu { } /* BuiltIn */
+   code > span.ex { } /* Extension */
+   code > span.pp { color: #bc7a00; } /* Preprocessor */
+   code > span.at { color: #7d9029; } /* Attribute */
+   code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+   code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+   code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+   code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>My Summer @ Rstudio &amp; an intro to the scales pkg</h1>
+    <p>Dana Seidel</p>
+  </header>
+
+  
+  
+<section id="my-summer-rstudio-an-intro-to-the-r-libscales" class="slide level2">
+<h2>My Summer @ Rstudio &amp; <br> an intro to the r-lib/scales 📦</h2>
+<p>Dana Paige Seidel <br> R-Ladies MeetUp, September 19, 2018</p>
+<p><img src="TidyverseShower_files/scales.png"> <img src="TidyverseShower_files/ggplot2.png"> <img src="TidyverseShower_files/scales.png"> <img src="TidyverseShower_files/ggplot2.png"> <img src="TidyverseShower_files/scales.png"> <img src="TidyverseShower_files/ggplot2.png"></p>
+</section>
+<section id="my-story" class="slide level2">
+<h2>My Story 📖</h2>
+<ul>
+<li>Introduced to R in college biostats course in 2008</li>
+<li>BSc &amp; MSc in biology/ecology</li>
+<li>Berkeley PhD Student studying animal movement 🐘 🦓</li>
+<li>Disillusioned with academia,<br>in ❤️ with #Rstats, teaching, &amp; data science</li>
+<li>2016 Google Maps GeoDataAnalytics summer intern</li>
+<li>2018 Rstudio ggplot2 summer intern</li>
+<li>Graduating in May 2019 🥂</li>
+</ul>
+<p><img src="MeetUpSlides_files/me.jpg" class="place right"></p>
+</section>
+<section id="my-summer" class="titleslide slide level1"><h2 class="shout">My Summer</h2></section><section id="three-overarching-goals" class="slide level2">
+<h2>Three overarching goals</h2>
+<ol type="1">
+<li>scales 1.0.0 release</li>
+<li>implement new features and bug fixes in ggplot2 (3.0.0.9000)</li>
+<li>document! document! document!</li>
+</ol>
+</section><section id="prepping-scales-1.0.0" class="slide level2">
+<h2>Prepping scales 1.0.0</h2>
+<ul>
+<li>moved into r-lib</li>
+<li>issue triaged</li>
+<li>revived and ushered old PRs over the finish line</li>
+<li>updated readme &amp; built <a href="http://scales.r-lib.org" target="_blank">new pkgdown site</a></li>
+<li>Complete <a href="https://github.com/r-lib/scales/issues/157" target="_blank">release checklist</a></li>
+</ul>
+</section><section id="ggplot2-features-fixes-and-docs" class="slide level2">
+<h2>ggplot2 features, fixes, and docs</h2>
+<p>Since ggplot2 3.0.0 was release about halfway through my internship, I started with a lot of documentation.</p>
+<p>I made several PRs just doing careful review of documentation of the most visited reference sites and general cleaning (spell-check, consistency)</p>
+<p>Then I got into some features and fixes mostly regarding themes and secondary axes.</p>
+</section><section id="keep-an-eye-out-for-my-changes" class="slide level2">
+<h2>Keep an eye out for my changes 🔎!</h2>
+<p><strong>Coming soon to a ggplot2 near you…</strong></p>
+<ul>
+<li>Improvements to seconday axis functionality for transformed and date/datetime axes (this is in 3.0.1, out next month!)</li>
+<li>Themeable aesthetics – setting unmapped aesthetics through themes.</li>
+<li>Right to Left plotting</li>
+</ul>
+</section><section id="sneak-peek-themeable-aesthetics" class="slide level2">
+<h2>Sneak Peek: Themeable aesthetics</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_theme &lt;-<span class="st"> </span><span class="kw">theme</span>(<span class="dt">geom =</span> <span class="kw">element_geom</span>(<span class="dt">colour =</span> <span class="st">&quot;purple&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;darkblue&quot;</span>))
+<span class="kw">ggplot</span>(mpg, <span class="kw">aes</span>(displ, hwy)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>my_theme</code></pre></div>
+<p><img src=TidyverseShower_files/WSQ6eod.png height=360 class="place bottom center"></p>
+</section><section id="bean-counting" class="slide level2">
+<h2>Bean counting</h2>
+<p><font color="#96049b">scales 0.5.0.9000-1.0.0.9000</font>: authored 22 PRs, merged 40+ PRs total, 24 contributors to the 1.0.0 release</p>
+<p><font color="#96049b">ggplot2, 3.0.0.9000</font>: opened 18 PRs (2 still open!)</p>
+<p>Merged PRs in 3 tidyverse/r-lib packages: scales, ggplot2, and lubridate! Recently vdiffr too!</p>
+</section>
+<section id="intro-to-scales-overview" class="titleslide slide level1"><h2 class="shout">Intro to Scales: Overview</h2></section><section id="scaling" class="slide level2">
+<h2>Scaling 📈</h2>
+<ul>
+<li>converting data values to perceptual properties.</li>
+<li>includes the inverse process: making guides (legends and axes) that can be used to read the graph</li>
+</ul>
+<p>Scaling and guides are often some of the most difficult parts of building any visualization.</p>
+</section><section id="scales" class="slide level2">
+<h2>Scales 📦</h2>
+<p>The scales package provides the internal scaling infrastructure to <a href="github.com/tidyverse/ggplot2" target="_blank">ggplot2</a> and exports standalone, system-agnostic, functions.</p>
+<p><strong> Use scales to customize the transformations, breaks, guides and palettes in your visualizations. </strong></p>
+</section><section id="installation" class="slide level2">
+<h2>Installation</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Scales is installed when you install ggplot2 or the tidyverse.</span>
+<span class="co"># But you can install just scales from CRAN:</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;scales&quot;</span>)
+
+<span class="co"># Or the development version from Github:</span>
+<span class="co"># install.packages(&quot;devtools&quot;)</span>
+devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;r-lib/scales&quot;</span>)
+
+<span class="co"># let&#39;s load it too! Scales is imported by ggplot2 but not loaded explicitly</span>
+<span class="kw">library</span>(scales)
+
+<span class="co"># For these slides, we&#39;ll also want</span>
+<span class="kw">library</span>(tidyverse)
+<span class="co"># for dplyr and ggplot2!</span></code></pre></div>
+</section>
+<section id="palettes" class="titleslide slide level1"><h2 class="shout">Palettes</h2></section><section id="colour-palettes" class="slide level2">
+<h2>Colour palettes 🎨</h2>
+<p>scales provides a number of color pallete functions that, given a range of values or the number of colours your want, will return a range of colors by hex code.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># pull a list of colours from any palette</span>
+<span class="kw">viridis_pal</span>()(<span class="dv">4</span>)
+<span class="co">#&gt; [1] &quot;#440154FF&quot; &quot;#31688EFF&quot; &quot;#35B779FF&quot; &quot;#FDE725FF&quot;</span>
+<span class="kw">brewer_pal</span>(<span class="dt">type =</span> <span class="st">&quot;div&quot;</span>, <span class="dt">direction =</span> <span class="op">-</span><span class="dv">1</span>)(<span class="dv">4</span>)
+<span class="co">#&gt; [1] &quot;#018571&quot; &quot;#80CDC1&quot; &quot;#DFC27D&quot; &quot;#A6611A&quot;</span>
+<span class="kw">div_gradient_pal</span>()(<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">4</span>))
+<span class="co">#&gt; [1] &quot;#2B6788&quot; &quot;#99A8B4&quot; &quot;#BBA19A&quot; &quot;#90503F&quot;</span></code></pre></div>
+</section><section id="color-palettes-cont." class="slide level2">
+<h2>Color palettes (cont.)</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># show_col is a quick way to view palette output</span>
+<span class="kw">show_col</span>(<span class="kw">viridis_pal</span>()(<span class="dv">4</span>))</code></pre></div>
+<p><img src="MeetUpSlides_files/figure-revealjs/unnamed-chunk-3-1.png" width="528" style="display: block; margin: auto;" /></p>
+</section><section id="use-scales-palettes-with-baser" class="slide level2">
+<h2>Use scales palettes with baseR</h2>
+<p>These functions are primarily used under the hood in ggplot2, but can be combined with any plotting system. For example, use them in combination with <code>grDevices::palette()</code>, provided with base R, to affect your base plots…</p>
+</section><section id="baser-example" class="slide level2">
+<h2>BaseR example</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">palette</span>(<span class="kw">viridis_pal</span>()(<span class="dv">4</span>))
+<span class="kw">plot</span>(Sepal.Length <span class="op">~</span><span class="st"> </span>Sepal.Width, <span class="dt">data =</span> iris, <span class="dt">col =</span> Species, <span class="dt">pch =</span> <span class="dv">20</span>)</code></pre></div>
+<p><img src="MeetUpSlides_files/figure-revealjs/unnamed-chunk-4-1.png" width="408" style="display: block; margin: auto;" /></p>
+</section><section id="non-color-palettes" class="slide level2">
+<h2>Non-color palettes</h2>
+<p>Often you want to be able to scale elements other than color. e.g. size, alpha, shape… Of course, scales handles those too!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">your_data &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">13</span>, <span class="dv">1</span>, <span class="dv">20</span>)
+<span class="kw">area_pal</span>(<span class="dt">range =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">20</span>))(your_data)
+<span class="co">#&gt;  [1] 65.60699 82.94300 50.49476 81.45266 71.09893 67.25857 58.22921</span>
+<span class="co">#&gt;  [8] 76.73974 57.92947 67.85479 65.45320 41.60924 44.44776</span>
+<span class="kw">shape_pal</span>()(<span class="dv">6</span>)
+<span class="co">#&gt; [1] 16 17 15  3  7  8</span></code></pre></div>
+</section><section id="see-these-in-action-in-ggplot2" class="slide level2">
+<h2>See these in action in ggplot2</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># color examples...</span>
+<span class="kw">scale_fill_brewer</span>()
+<span class="kw">scale_color_grey</span>()
+<span class="kw">scale_color_viridis_c</span>()
+
+<span class="co"># shape examples</span>
+<span class="kw">scale_shape</span>()
+<span class="kw">scale_shape_ordinal</span>()
+
+<span class="co"># implement them yourself with...</span>
+<span class="kw">scale_color_manual</span>()
+<span class="kw">scale_shape_manual</span>()
+<span class="kw">scale_size_manual</span>()
+<span class="co"># using available scales functions!</span></code></pre></div>
+</section>
+<section id="guides-breaks" class="titleslide slide level1"><h2 class="shout">Guides &amp; breaks</h2></section><section id="making-guides-easy-scales-formatters" class="slide level2">
+<h2>Making Guides easy: scales’ formatters</h2>
+<p>The scales package also provides useful helper functions for formatting numeric data for all types of labels</p>
+<p>As of 1.0.0, most of scales formatters are just variations on the generic <code>number()</code> and <code>number_format()</code> functions.</p>
+</section><section id="the-number-formatter" class="slide level2">
+<h2>The number formatter</h2>
+<ul>
+<li>The generic formatter offers consistency in behaviour and arguments across formatters and adds additional functionality for international customization.</li>
+<li>With it’s adoption, existing formatters gained new, consistent arguments for <code>scale</code>, <code>accuracy</code>, <code>trim</code>, <code>big.mark</code>, <code>decimal.mark</code>, <code>prefix</code>, <code>suffix</code> etc.</li>
+</ul>
+</section><section id="the-number-formatter-in-action" class="slide level2">
+<h2>The number formatter, in action</h2>
+<p>By default, <code>number()</code> will take any numeric vector, round them to nearest whole number, add spaces between every 3 digits and return a character vector useful for feeding to a labels argument in ggplot2.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">number</span>(<span class="kw">c</span>(<span class="fl">12.3</span>, <span class="dv">4</span>, <span class="fl">12345.789</span>, <span class="fl">0.0002</span>))
+<span class="co">#&gt; [1] &quot;12&quot;     &quot;4&quot;      &quot;12 346&quot; &quot;0&quot;</span></code></pre></div>
+</section><section id="changing-defaults" class="slide level2">
+<h2>Changing defaults</h2>
+<p>You can easily specify a different rounding behavior, or change the <code>big_mark</code> or <code>decimal_mark</code> for international styling. Even add a <code>prefix</code> or a <code>suffix</code> or <code>scale</code> your numbers on the fly.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">number</span>(<span class="kw">c</span>(<span class="fl">12.3</span>, <span class="dv">4</span>, <span class="fl">12345.789</span>, <span class="fl">0.0002</span>),
+  <span class="dt">big.mark =</span> <span class="st">&quot;.&quot;</span>,
+  <span class="dt">decimal.mark =</span> <span class="st">&quot;,&quot;</span>,
+  <span class="dt">accuracy =</span> .<span class="dv">01</span>
+)
+<span class="co">#&gt; [1] &quot;12,30&quot;     &quot;4,00&quot;      &quot;12.345,79&quot; &quot;0,00&quot;</span></code></pre></div>
+</section><section id="other-formatters" class="slide level2">
+<h2>Other Formatters:</h2>
+<p><font size = "3"> <code>comma_format()</code> <code>comma()</code> <code>percent_format()</code> <code>percent()</code> <code>unit_format()</code></p>
+<p><code>date_format()</code> <code>time_format()</code> : Formatted dates and times.</p>
+<p><code>dollar_format()</code> <code>dollar()</code> : Currency formatters, round to nearest cent and display dollar sign.</p>
+<p><code>ordinal_format()</code> <code>ordinal()</code> <code>ordinal_english()</code> <code>ordinal_french()</code> <code>ordinal_spanish()</code>: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.</p>
+<p><code>pvalue_format()</code> <code>pvalue()</code> : p-values formatter</p>
+<p><code>scientific_format()</code> <code>scientific()</code> : Scientific formatter </font></p>
+</section><section id="examples" class="slide level2">
+<h2>Examples</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># percent() function takes a numeric and does your division and labelling for you</span>
+<span class="kw">percent</span>(<span class="kw">c</span>(<span class="fl">0.1</span>, <span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span>, <span class="fl">0.56</span>))
+<span class="co">#&gt; [1] &quot;10.0%&quot; &quot;33.3%&quot; &quot;56.0%&quot;</span>
+
+<span class="co"># comma() adds commas into large numbers for easier readability</span>
+<span class="kw">comma</span>(<span class="fl">10e6</span>)
+<span class="co">#&gt; [1] &quot;10,000,000&quot;</span>
+
+<span class="co"># dollar() adds currency symbols</span>
+<span class="kw">dollar</span>(<span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">125</span>, <span class="dv">3000</span>))
+<span class="co">#&gt; [1] &quot;$100&quot;   &quot;$125&quot;   &quot;$3,000&quot;</span>
+
+<span class="co"># unit_format() adds unique units</span>
+<span class="co"># the scale argument allows for simple conversion on the fly</span>
+<span class="kw">unit_format</span>(<span class="dt">unit =</span> <span class="st">&quot;ha&quot;</span>, <span class="dt">scale =</span> <span class="fl">1e-4</span>)(<span class="kw">c</span>(<span class="fl">10e6</span>, <span class="fl">10e4</span>, <span class="fl">8e3</span>))
+<span class="co">#&gt; [1] &quot;1 000 ha&quot; &quot;10 ha&quot;    &quot;1 ha&quot;</span></code></pre></div>
+</section><section id="why-the-_format-functions" class="slide level2">
+<h2>Why the *_format() functions?</h2>
+<p>Where <code>number()</code> returns a character vector, <code>number_format()</code> and like functions returns a fuctions that can be applied repeatedly or fed to a <code>labels</code> argument in a ggplot2 scale function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># percent formatting in the French style</span>
+french_percent &lt;-<span class="st"> </span><span class="kw">percent_format</span>(<span class="dt">decimal.mark =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">suffix =</span> <span class="st">&quot; %&quot;</span>)
+<span class="kw">french_percent</span>(<span class="kw">runif</span>(<span class="dv">10</span>))
+<span class="co">#&gt;  [1] &quot;89,4 %&quot; &quot;74,6 %&quot; &quot;76,9 %&quot; &quot;45,0 %&quot; &quot;19,9 %&quot; &quot;41,1 %&quot; &quot;25,9 %&quot;</span>
+<span class="co">#&gt;  [8] &quot;11,4 %&quot; &quot;15,3 %&quot; &quot;1,8 %&quot;</span>
+
+<span class="co"># currency formatting Euros (and simple conversion!)</span>
+usd_to_euro &lt;-<span class="st"> </span><span class="kw">dollar_format</span>(<span class="dt">prefix =</span> <span class="st">&quot;&quot;</span>, <span class="dt">suffix =</span> <span class="st">&quot;\u20ac&quot;</span>, <span class="dt">scale =</span> .<span class="dv">86</span>)
+<span class="kw">usd_to_euro</span>(<span class="dv">100</span>)
+<span class="co">#&gt; [1] &quot;86€&quot;</span></code></pre></div>
+</section><section id="applied-in-ggplot-scales" class="slide level2">
+<h2>Applied in ggplot scales</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dsamp &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">sample_n</span>(diamonds, <span class="dv">1000</span>)
+<span class="kw">ggplot</span>(dsamp, <span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price, <span class="dt">colour =</span> clarity)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> usd_to_euro)</code></pre></div>
+<p><img src="MeetUpSlides_files/figure-revealjs/unnamed-chunk-10-1.png" width="528" style="display: block; margin: auto;" /></p>
+</section><section id="breaks" class="slide level2">
+<h2>Breaks</h2>
+<p><font size="4"></p>
+<p><code>scales::extended_breaks()</code> sets most breaks by default in ggplot2</p>
+<p><code>pretty_breaks()</code> is an alternative break calculation</p>
+<p>Many of the formatter and transformation functions have matching break functions, eg:</p>
+<ul>
+<li><code>log_breaks()</code> is used to set breaks for log transformed axes with <code>log_trans()</code>.</li>
+<li><code>date_breaks()</code> is used to set nice breaks for date and date/time axes.</li>
+</ul>
+<p></font></p>
+</section>
+<section id="bounds-transformations" class="titleslide slide level1"><h2 class="shout">Bounds &amp; transformations</h2></section><section id="rescaling-data" class="slide level2">
+<h2>Rescaling data</h2>
+<p>scales provides a handful of functions for rescaling data to fit new ranges.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the rescale functions can rescale continuous vectors to new min, mid, or max values</span>
+x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">1</span>)
+x
+<span class="co">#&gt; [1] 0.89018163 0.04086432 0.42849797 0.91517236 0.70116215</span>
+
+<span class="kw">rescale</span>(x, <span class="dt">to =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))
+<span class="co">#&gt; [1] 48.57083  0.00000 22.16803 50.00000 37.76117</span>
+<span class="kw">rescale_mid</span>(x, <span class="dt">mid =</span> .<span class="dv">25</span>)
+<span class="co">#&gt; [1] 0.9812148 0.3427959 0.6341742 1.0000000 0.8391318</span>
+<span class="kw">rescale_max</span>(x, <span class="dt">to =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))
+<span class="co">#&gt; [1] 48.634643  2.232602 23.410780 50.000000 38.307656</span></code></pre></div>
+</section><section id="squish-discard-censor" class="slide level2">
+<h2>Squish, Discard, Censor</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># squish() will squish your values into a specified range, respecting NAs</span>
+<span class="kw">squish</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">range =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))
+<span class="co">#&gt; [1] 0.0 0.5 1.0 1.0  NA</span>
+
+<span class="co"># discard will drop data outside a range, respecting NAs</span>
+scales<span class="op">::</span><span class="kw">discard</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">range =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))
+<span class="co">#&gt; [1] 0.5 1.0  NA</span>
+
+<span class="co"># censor will return NAs for values outside a range</span>
+<span class="kw">censor</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">range =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))
+<span class="co">#&gt; [1]  NA 0.5 1.0  NA  NA</span></code></pre></div>
+</section><section id="applied-to-ggplot2" class="slide level2">
+<h2>Applied to ggplot2</h2>
+<p><font size= "4">Squish can be really useful for setting the <code>oob</code> argument for a colour scale with reduced limits.</font></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Sepal.Width, <span class="dt">colour =</span> Sepal.Length)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_continuous</span>(<span class="dt">limit =</span> <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">8</span>), <span class="dt">oob =</span> scales<span class="op">::</span>squish)</code></pre></div>
+<p><img src="MeetUpSlides_files/figure-revealjs/unnamed-chunk-11-1.png" width="408" style="display: block; margin: auto;" /></p>
+</section><section id="transformations" class="slide level2">
+<h2>Transformations</h2>
+<p>scales provides a number of common transformation functions (<code>*_trans()</code>) which specify functions to preform data transformations, format labels, and set correct breaks.</p>
+<p>For example: <code>log_trans()</code>, <code>sqrt_trans()</code>, <code>reverse_trans()</code> power the <code>scale_*_log10()</code>, <code>scale_*_sqrt()</code>, <code>scale_*_reverse()</code> functions in ggplot2.</p>
+</section><section id="additional-transformations" class="slide level2">
+<h2>Additional Transformations</h2>
+<p><font size="4"></p>
+<ul>
+<li><code>asn_trans()</code>: Arc-sin square root transformation.</li>
+<li><code>atanh_trans()</code>: Arc-tangent transformation.</li>
+<li><code>boxcox_trans()</code> <code>modulus_trans()</code> : Box-Cox &amp; modulus transformations.</li>
+<li><code>date_trans()</code> <code>time_trans()</code> <code>hms_trans()</code> : transformations for date, datetime, and hms classes</li>
+<li><code>exp_trans()</code> : Exponential transformation (inverse of log transformation).</li>
+<li><code>pseudolog_trans()</code> : Pseudo-log transformation</li>
+<li><code>probabilty_trans()</code>: Probability transformation</li>
+</ul>
+<p>and more… </font></p>
+</section><section id="building-your-own-transformations" class="slide level2">
+<h2>Building your own transformations</h2>
+<p>scales also gives users the ability to define and apply their own custom transformation functions for repeated use.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># use trans_new to build a new transformation</span>
+dollar_log &lt;-<span class="st"> </span><span class="kw">trans_new</span>(
+  <span class="dt">name =</span> <span class="st">&quot;dollar_log&quot;</span>,
+  <span class="dt">trans =</span> <span class="kw">log_trans</span>(<span class="dt">base =</span> <span class="dv">10</span>)<span class="op">$</span>trans, <span class="co"># extract a single element from another trans</span>
+  <span class="dt">inverse =</span> <span class="cf">function</span>(x) <span class="dv">10</span><span class="op">^</span>(x), <span class="co"># or write your own custom functions</span>
+  <span class="dt">breaks =</span> <span class="kw">log_breaks</span>(),
+  <span class="dt">format =</span> <span class="kw">dollar_format</span>()
+  )</code></pre></div>
+</section><section id="applied-in-ggplot2" class="slide level2">
+<h2>Applied in ggplot2</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># apply our new transformation!</span>
+<span class="kw">ggplot</span>(dsamp, <span class="kw">aes</span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price, <span class="dt">colour =</span> clarity)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">trans =</span> dollar_log)</code></pre></div>
+<p><img src="MeetUpSlides_files/figure-revealjs/unnamed-chunk-12-1.png" width="528" style="display: block; margin: auto;" /></p>
+</section><section id="additional-uses" class="slide level2">
+<h2>Additional uses</h2>
+<p>In 1.0.0.9000, scales implements R6 classe <code>Range()</code> functions to allow users to create their own scales and mutable ranges. These were exported in 1.0.0 but have fatal bugs fixed in dev version.</p>
+<p>These functions will eventually be imported into ggplot2 to power custom ranges instead of ggproto objects.</p>
+</section>
+<section id="wrap-up" class="titleslide slide level1"><h2 class="shout">Wrap Up!</h2></section><section id="takeaway" class="slide level2">
+<h2>Takeaway</h2>
+<p><font color="#96049b">scales</font> is a useful package for specifying breaks, labels, palettes, and transformations for your visualizations in ggplot2 and beyond.</p>
+</section><section id="summer-revelations" class="slide level2">
+<h2>Summer Revelations</h2>
+<p>Open source development is just that open! Open to me AND to you! <strong>We need more ladies in dev!</strong></p>
+<p>Development work is a wonderful blend of creativity, investigation, puzzle solving, and design. In my view, the pefect hobby and a unique way to give back to the #rstats community.</p>
+<p>I want to use my experience in any way I can to help other women get involve in their favorite packages or creating their own!</p>
+</section><section id="summer-revelations-cont." class="slide level2">
+<h2>Summer Revelations (cont.)</h2>
+<p>Want to know more about what I did this summer? Read my <a href="https://www.danaseidel.com/2018-09-01-ATidySummer/" target="_blank">blog</a> about the experience and my work.</p>
+</section><section id="questions" class="slide level2">
+<h2>Questions?</h2>
+<p>Slides available at <a href="https://www.danaseidel.com/MeetUpSlides" target="_blank">danaseidel.com/MeetUpSlides</a></p>
+<p>📦 <a href="https://github.com/MangoTheCat/rmdshower" target="_blank">rmdshower</a></p>
+<p>📦 <a href="https://github.com/hadley/emo" target="_blank">emo</a></p>
+<p>For the raw .Rmd for these slides, see <a href="https://github.com/dpseidel/dpseidel.github.io/blob/master/MeetUpSlides.Rmd" target="_blank">here</a>.</p>
+<p>For the adapted css code for this <font color="#96049b">#Rladies</font> theme, see <a href="https://github.com/dpseidel/dpseidel.github.io/blob/master/MeetUpSlides_files/shower-ribbon/package/styles/screen-16x10.css" target="_blank">here</a>.</p>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="MeetUpSlides_files\rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>
