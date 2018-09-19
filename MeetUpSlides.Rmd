@@ -1,7 +1,6 @@
 ---
 title: "My Summer @ Rstudio & an intro to the scales pkg"
 author: "Dana Seidel"
-date: "9/14/2018"
 output:
   rmdshower::shower_presentation:
     self_contained: false
