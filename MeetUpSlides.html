@@ -60,7 +60,7 @@
 
   <header class="caption">
     <h1>My Summer @ Rstudio &amp; an intro to the scales pkg</h1>
-    <p>Dana Seidel</p>
+    <p></p>
   </header>
 
   
@@ -179,8 +179,8 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 <p>Often you want to be able to scale elements other than color. e.g. size, alpha, shape… Of course, scales handles those too!</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">your_data &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">13</span>, <span class="dv">1</span>, <span class="dv">20</span>)
 <span class="kw">area_pal</span>(<span class="dt">range =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">20</span>))(your_data)
-<span class="co">#&gt;  [1] 76.93372 76.38955 84.25964 37.57654 37.01364 81.82481 32.18784</span>
-<span class="co">#&gt;  [8] 65.64327 40.89910 67.11433 53.20349 37.81946 82.81928</span>
+<span class="co">#&gt;  [1] 30.37051 79.74341 52.23325 27.88111 81.86193 50.02463 69.63144</span>
+<span class="co">#&gt;  [8] 56.08445 67.06121 67.17516 33.24309 81.88239 60.27626</span>
 <span class="kw">shape_pal</span>()(<span class="dv">6</span>)
 <span class="co">#&gt; [1] 16 17 15  3  7  8</span></code></pre></div>
 </section><section id="see-these-in-action-in-ggplot2" class="slide level2">
@@ -256,8 +256,8 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># percent formatting in the French style</span>
 french_percent &lt;-<span class="st"> </span><span class="kw">percent_format</span>(<span class="dt">decimal.mark =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">suffix =</span> <span class="st">&quot; %&quot;</span>)
 <span class="kw">french_percent</span>(<span class="kw">runif</span>(<span class="dv">10</span>))
-<span class="co">#&gt;  [1] &quot;56,0 %&quot; &quot;28,5 %&quot; &quot;82,6 %&quot; &quot;73,4 %&quot; &quot;4,3 %&quot;  &quot;98,9 %&quot; &quot;14,7 %&quot;</span>
-<span class="co">#&gt;  [8] &quot;56,5 %&quot; &quot;40,6 %&quot; &quot;36,8 %&quot;</span>
+<span class="co">#&gt;  [1] &quot;61,0 %&quot; &quot;32,6 %&quot; &quot;76,0 %&quot; &quot;25,2 %&quot; &quot;51,6 %&quot; &quot;9,9 %&quot;  &quot;14,0 %&quot;</span>
+<span class="co">#&gt;  [8] &quot;48,7 %&quot; &quot;98,6 %&quot; &quot;64,9 %&quot;</span>
 
 <span class="co"># currency formatting Euros (and simple conversion!)</span>
 usd_to_euro &lt;-<span class="st"> </span><span class="kw">dollar_format</span>(<span class="dt">prefix =</span> <span class="st">&quot;&quot;</span>, <span class="dt">suffix =</span> <span class="st">&quot;\u20ac&quot;</span>, <span class="dt">scale =</span> .<span class="dv">86</span>)
@@ -287,14 +287,14 @@ usd_to_euro &lt;-<span class="st"> </span><span class="kw">dollar_format</span>(
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the rescale functions can rescale continuous vectors to new min, mid, or max values</span>
 x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">1</span>)
 x
-<span class="co">#&gt; [1] 0.9478813 0.4674544 0.6561729 0.9222220 0.7739505</span>
+<span class="co">#&gt; [1] 0.4814713 0.2530059 0.7178684 0.8923705 0.9474114</span>
 
 <span class="kw">rescale</span>(x, <span class="dt">to =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))
-<span class="co">#&gt; [1] 50.00000  0.00000 19.64071 47.32953 31.89831</span>
+<span class="co">#&gt; [1] 16.45043  0.00000 33.47198 46.03683 50.00000</span>
 <span class="kw">rescale_mid</span>(x, <span class="dt">mid =</span> .<span class="dv">25</span>)
-<span class="co">#&gt; [1] 1.0000000 0.6557961 0.7910043 0.9816163 0.8753865</span>
+<span class="co">#&gt; [1] 0.6659503 0.5021550 0.8354322 0.9605392 1.0000000</span>
 <span class="kw">rescale_max</span>(x, <span class="dt">to =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))
-<span class="co">#&gt; [1] 50.00000 24.65785 34.61261 48.64649 40.82528</span></code></pre></div>
+<span class="co">#&gt; [1] 25.40983 13.35248 37.88578 47.09520 50.00000</span></code></pre></div>
 </section><section id="squish-discard-censor" class="slide level2">
 <h2>Squish, Discard, Censor</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># squish() will squish your values into a specified range, respecting NAs</span>
