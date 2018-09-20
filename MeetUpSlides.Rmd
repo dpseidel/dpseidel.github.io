@@ -386,8 +386,8 @@ ggplot(dsamp, aes(x = carat, y = price, colour = clarity)) +
   
 ## Additional uses
 
-In 1.0.0.9000, scales implements R6 classe `Range()` functions to allow users to create their own
-scales and mutable ranges. These were exported in 1.0.0 but have fatal bugs fixed in dev version.
+In 1.0.0.9000, scales implements `Range()` functions to allow users to create their own
+scales and mutable ranges. These were exported in 1.0.0 but had fatal bugs now fixed in the dev version.
 
 These functions will eventually be imported into ggplot2 to power custom ranges
 instead of ggproto objects. 
