@@ -4,13 +4,25 @@ title: Recent Projects & Experience
 subtitle: The work side of work/life balance
 ---
 
-:star: **Personal Announcement!:** This summer I'll be working at RStudio as an intern on the ggplot2 package! I'm excited to expand my development skills and get my hands dirty maintaining a package used by so many! :star:
 
-Generally, my research focuses on the movement of large mammals and their diseases, especially those with environmental reservoirs. My primary system of investigation is anthrax in populations of African elephant and zebra within Etosha National Park, Namibia. 
+:star: I am graduating from UC Berkeley with my Ph.D. in summer 2019 and looking
+for full time data science or statistics work beginning in August 2019. If you know of an open position or are hiring, please contact me if you think my background and experience would be a good fit. :star:
+
+In general, my doctoral research has focused on the movement of large mammals and their diseases. My primary system of investigation is anthrax in populations of African elephant and zebra within Etosha National Park, Namibia. I've also explored the movement behavior of black rhinos and modeled the spatial risk
+of Chronic Wasting Disease in Albertan deer populations. In 2018 I built a [shiny 
+app](https://github.com/dpseidel/ABCWD_Shiny) for the Government of Alberta to help managers regularly update their risk models with annually collected data. 
+Code for all my published projects is available on my [github](https://github.com/dpseidel).
 
 <p align="center"><img src="https://dpseidel.github.io/img/elephants.jpg"/></p>
 
-From 2015-2017, I was a fellow with a NSF NRT project [Data Science for the 21st Century](http://ds421.berkeley.edu/) at Berkeley, training data scientists to analyse the social-environmental problems prompted by our rapidly changing global climate. I continue to [teach](https://dpseidel.github.io/teaching) with the program.
+In summer 2018, I was delighted to be an intern with RStudio working on the tidyverse
+team - you can read more about my experiences [here](https://www.danaseidel.com/2018-09-01-ATidySummer/). 
+
+<p align="center"><img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/scales.png" height="100" width="90" />
+<img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/tidyverse.png" height="100" width="90" />
+<img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/ggplot2.png" height="100" width="90" /></p>
+
+From 2015-2017, I was a fellow with a NSF NRT project [Data Science for the 21st Century](http://ds421.berkeley.edu/) at Berkeley, training data scientists to analyse the social-environmental problems prompted by our rapidly changing global climate. I continued to [teach](https://dpseidel.github.io/teaching) with the program through May 2018.
 
 In the summer of 2016, I worked as a Quantitative Analyst Intern with the Geo Data Analytics team at Google Maps. It was a great opportunity to apply my spatial statistics expertise and hone my data science skills in a totally different realm. 
 
