@@ -1,21 +1,16 @@
 ---
 layout: page
 title: Recent Projects & Experience
-subtitle: The work side of work/life balance
 ---
 
-
-:star: I am graduating from UC Berkeley with my Ph.D. in summer 2019 and looking
-for full time data science or statistics work beginning in August 2019. If you know of an open position or are hiring, please contact me if you think my background and experience would be a good fit. :star:
-
-In general, my doctoral research has focused on the movement of large mammals and their diseases. My primary system of investigation is anthrax in populations of African elephant and zebra within Etosha National Park, Namibia. I've also explored the movement behavior of black rhinos and modeled the spatial risk
+My doctoral research focused on the movement of large mammals and their diseases. My primary system of investigation is anthrax in populations of African elephant and zebra within Etosha National Park, Namibia. I've also explored the movement behavior of black rhinos and modeled the spatial risk 
 of Chronic Wasting Disease in Albertan deer populations. In 2018 I built a [shiny 
 app](https://github.com/dpseidel/ABCWD_Shiny) for the Government of Alberta to help managers regularly update their risk models with annually collected data. 
 Code for all my published projects is available on my [github](https://github.com/dpseidel).
 
 <p align="center"><img src="https://dpseidel.github.io/img/elephants.jpg"/></p>
 
-In summer 2018, I was delighted to be an intern with RStudio working on the tidyverse
+In summer 2018, I was delighted to intern with RStudio working on the tidyverse
 team - you can read more about my experiences [here](https://www.danaseidel.com/2018-09-01-ATidySummer/). 
 
 <p align="center"><img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/scales.png" height="100" width="90" />
