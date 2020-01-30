@@ -161,7 +161,7 @@ rescale(runif(5), to = c(0, 50))
 ```
 
 ```
-## [1] 20.55662 12.70495 10.11069 50.00000  0.00000
+## [1] 40.68297 23.86821 50.00000  0.00000 42.49868
 ```
 
 ---
@@ -306,21 +306,7 @@ Users can specify a different rounding behavior (`accuracy`), or change the `big
 
 
 ```r
-french_percent &lt;- label_percent( 
-  decimal.mark = ",",
-  suffix = " %", # add some space maybe?
-  accuracy = .1)
-french_percent(runif(3))
-```
-
-```
-## [1] "44,5 %" "86,0 %" "36,0 %"
-```
-
-```r
-usd_to_euro &lt;- label_dollar(
-  prefix = "", suffix = "\u20ac", scale = .91)
-usd_to_euro(100)
+label_dollar(prefix = "", suffix = "\u20ac", scale = .91)(100)
 ```
 
 ```
@@ -410,7 +396,7 @@ area_pal(range = c(1, 20))(your_data)
 ```
 
 ```
-## [1] 39.83265 51.21671 76.81153 23.33323 33.73796
+## [1] 61.47381 43.13051 34.18974 72.24327 54.83530
 ```
 
 ```r

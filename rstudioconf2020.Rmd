@@ -264,15 +264,7 @@ Many of the `label_*` functions are built off of the generic `label_number` func
 Users can specify a different rounding behavior (`accuracy`), or change the `big_mark` or `decimal_mark` for international styling; even add a `prefix` or a `suffix` or `scale` your numbers on the fly. 
 
 ```{r}
-french_percent <- label_percent( 
-  decimal.mark = ",",
-  suffix = " %", # add some space maybe?
-  accuracy = .1)
-french_percent(runif(3))
-
-usd_to_euro <- label_dollar(
-  prefix = "", suffix = "\u20ac", scale = .91)
-usd_to_euro(100)
+label_dollar(prefix = "", suffix = "\u20ac", scale = .91)(100)
 ```
 
 ---
