@@ -63,9 +63,16 @@ class: center, middle
 
 ## ⚠️ Notable changes in [scales 1.1.0](https://www.tidyverse.org/blog/2019/11/scales-1-1-0/)!
 
-+ New naming convention for guides functions: `breaks_*`, `labels_*` (enables easy tab completion!👍)
 
-+ New `demo_*` functions for easy ggplot exampling
++ New naming convention for guides functions: `breaks_*`, `labels_*` 
+
+E.g., `number` and `number_format` have been **"superseded"** by `label_number`
+&lt;/br&gt;
+
+This enables really easy tab completion!👍
+
++ New `demo_*` functions for easy ggplot2 examples 
+
 
 ---
 class: center, middle, inverse 
@@ -154,7 +161,7 @@ rescale(runif(5), to = c(0, 50))
 ```
 
 ```
-## [1] 30.069032  0.000000 10.010167 50.000000  4.351211
+## [1] 20.55662 12.70495 10.11069 50.00000  0.00000
 ```
 
 ---
@@ -307,7 +314,7 @@ french_percent(runif(3))
 ```
 
 ```
-## [1] "96,1 %" "63,5 %" "32,9 %"
+## [1] "44,5 %" "86,0 %" "36,0 %"
 ```
 
 ```r
@@ -403,7 +410,7 @@ area_pal(range = c(1, 20))(your_data)
 ```
 
 ```
-## [1] 79.46603 73.35552 60.22752 85.16348 49.28410
+## [1] 39.83265 51.21671 76.81153 23.33323 33.73796
 ```
 
 ```r

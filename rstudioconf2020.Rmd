@@ -77,9 +77,16 @@ knitr::opts_chunk$set(echo = TRUE, dpi = 180, fig.height = 4)
 
 ## `r emo::ji("warning")` Notable changes in [scales 1.1.0](https://www.tidyverse.org/blog/2019/11/scales-1-1-0/)!
 
-+ New naming convention for guides functions: `breaks_*`, `labels_*` (enables easy tab completion!`r emo::ji("thumbs_up")`)
 
-+ New `demo_*` functions for easy ggplot exampling
++ New naming convention for guides functions: `breaks_*`, `labels_*` 
+
+E.g., `number` and `number_format` have been **"superseded"** by `label_number`
+</br>
+
+This enables really easy tab completion!`r emo::ji("thumbs_up")`
+
++ New `demo_*` functions for easy ggplot2 examples 
+
 
 ---
 class: center, middle, inverse 
