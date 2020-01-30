@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Taking visualizations to the next level with the scales package</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dana Seidel (@dpseidel)    https://scales.r-lib.org/" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Taking visualizations to the next level with the scales package
+## <img src="scaleshex.png" style="width: 100px" />
+### Dana Seidel (<span class="citation">@dpseidel</span>) <br/><br/> <a href="https://scales.r-lib.org/" class="uri">https://scales.r-lib.org/</a>
+
+---
+
+class: middle, center, inverse
+
+![](engine.jpg)
+
+---
+class: middle, center
+
+
+## What do we mean by "scales" really?? &lt;br/&gt; What is scaling? 📈
+
+ (1) converting data values to perceptual properties 
+
+➕
+
+ (2) the inverse process: making guides (legends and axes) to read the graph 
+
+&lt;br/&gt;
+&lt;br/&gt;
+
+Scaling and guides are often some of the most difficult parts of building any visualization.
+
+---
+class: center, middle
+
+![](scaleshex.png)
+
+The scales package provides the internal scaling infrastructure to
+[ggplot2](https://github.com/tidyverse/ggplot2) and exports standalone, **system-agnostic**,
+functions. 
+
+The functions provided in the scales package try to make easier 5 different things about data scales:
+
+1. transformations
+2. bounds and rescaling
+3. breaks 
+4. labels 
+5. palettes
+
+Learning a little about these functions can help transform your plots and make you a true visualization magician 🧙‍♂️
+
+---
+class: center, middle
+
+
+
+## ⚠️ Notable changes in [scales 1.1.0](https://www.tidyverse.org/blog/2019/11/scales-1-1-0/)!
+
++ New naming convention for guides functions: `breaks_*`, `labels_*` (enables easy tab completion!👍)
+
++ New `demo_*` functions for easy ggplot exampling
+
+---
+class: center, middle, inverse 
+
+
+# Transformations &amp; Bounds
+
+---
+class: center, middle
+
+# Transformations
+
+scales provides a number of common transformation functions (`*_trans()`) which specify functions to preform data transformations, format labels, and set correct breaks.
+
+&lt;br/&gt;
+
+For example: &lt;br/&gt;
+`log_trans()`, `sqrt_trans()`, `reverse_trans()` power the `scale_*_log10()`,
+`scale_*_sqrt()`, `scale_*_reverse()` functions in ggplot2. 
+
+
+---
+class: center, middle
+
+
+```r
+ggplot(diamonds) +
+  geom_point(aes(y = price, x = carat))
+```
+
+![](rstudioconf2020_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
+
+
+---
+class: center, middle
+
+
+```r
+ggplot(diamonds) +
+  geom_point(aes(y = price, x = carat)) + 
+  scale_x_continuous(trans = log_trans()) +
+  scale_y_log10()
+```
+
+![](rstudioconf2020_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+---
+class: center, middle
+
+
+```r
+ggplot(diamonds) +
+  geom_hex(aes(y = price, x = carat)) + 
+  scale_x_log10() +
+  scale_y_log10()
+```
+
+![](rstudioconf2020_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+
+---
+class: left, middle
+
+## Additional Transformations
+- `asn_trans()` : Arc-sin square root transformation.
+- `atanh_trans()` : Arc-tangent transformation.
+- `boxcox_trans()` `modulus_trans()` : Box-Cox &amp; modulus transformations.
+- `date_trans()` `time_trans()` `hms_trans()` : transformations for date, datetime, and hms classes
+- `exp_trans()` : Exponential transformation (inverse of log transformation).
+- `pseudolog_trans()` : Pseudo-log transformation
+- `probabilty_trans()`: Probability transformation
+and more... 
+---
+class: middle, left
+
+## Building your own transformations
+
+Users can also define and apply their own custom 
+transformation functions for repeated use.
+
+```r
+# use trans_new to build a new transformation
+dollar_log &lt;- trans_new(
+  name = "dollar_log",
+  trans = log_trans(base = 10)$trans, # extract a single element from another trans
+  inverse = function(x) 10^(x), # or write your own custom functions
+  breaks = breaks_log(),
+  format = label_dollar()
+  )
+```
+
+---
+class: center, middle
+
+## Rescaling data
+scales provides a handful of functions for rescaling data to fit new ranges.
+&lt;br/&gt;
+
+The rescale functions can help rescale continuous vectors to new min, mid, or max values
+- `rescale` rescales to a new min and max
+- `rescale_mid` rescales to a new mid, max, and min
+- `rescale_max` rescales to a new maximum
+
+
+```r
+# rescale to new min and max
+rescale(runif(5), to = c(0, 50))
+```
+
+```
+## [1] 24.97849 16.19816 45.77471  0.00000 50.00000
+```
+
+---
+class: center, middle
+
+## Squish, Discard, Censor
+
+- `squish` will squish your values into a specified range, respecting NAs
+- `discard` will drop data outside a range, respecting NAs
+- `censor`  will return NAs for values outside a range
+
+
+```r
+squish(c(-1, 0.5, 1, 2, NA), range = c(0, 1))
+```
+
+```
+## [1] 0.0 0.5 1.0 1.0  NA
+```
+
+```r
+scales::discard(c(-1, 0.5, 1, 2, NA), range = c(0, 1))
+```
+
+```
+## [1] 0.5 1.0  NA
+```
+
+```r
+censor(c(-1, 0.5, 1, 2, NA), range = c(0, 1))
+```
+
+```
+## [1]  NA 0.5 1.0  NA  NA
+```
+
+---
+class: center, middle
+
+#### Squish can be really useful for setting the `oob` argument for a color scale with reduced limits.
+
+```r
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, colour = Sepal.Length)) +
+  geom_point() + 
+  scale_color_continuous(limit = c(6, 8), oob = scales::squish)
+```
+
+![](rstudioconf2020_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+---
+class: center, middle, inverse 
+
+# Sensible Breaks for continuous scales
+
+---
+class: left, middle
+
+## Breaks
+
+- `breaks_extended()` sets most breaks by default in ggplot2 using Wilkonson's algorithm
+- `breaks_pretty()` uses R's default breaks algorithm
+- `breaks_log()` is used to set breaks for log transformed axes with `log_trans()`.
+- `breaks_width()` is used to set breaks by width, especially useful for date and date/time axes.
+
+The output of each `breaks_*` function is a function. All these are designed to take a vector of limits and return a vector of break points.
+
+---
+class: left, middle
+
+```r
+breaks_extended(n = 8)(c(74, 997))
+```
+
+```
+##  [1]    0  100  200  300  400  500  600  700  800  900 1000
+```
+
+```r
+breaks_log(8)(c(74, 997))
+```
+
+```
+## [1]   70  100  200  300  400  500  700 1000
+```
+
+```r
+breaks_width(width = 8)(c(7, 111))
+```
+
+```
+##  [1]   0   8  16  24  32  40  48  56  64  72  80  88  96 104 112
+```
+
+---
+class: center, middle, inverse 
+
+# Effective Labels
+
+---
+class: left, middle
+
+# Label Formatters:
+
+- `label_number`: a generic number formatter that forces intuitive decimal display of numbers
+- `label_dollar`, `label_percent`, `label_comma`
+- `label_scientific` 
+- `label_date`, `label_time` : Formatted dates and times.
+- `label_ordinal`: add ordinal suffixes (-st, -nd, -rd, -th) to numbers according to languages (e.g. English, Spanish, French).
+- `label_bytes`, `label_number_si` 
+- `label_parse`, `label_math`, `label_pvalue`
+-` label_wrap`
+
+For a full list and descriptions, see: [scales.r-lib.org/reference](scales.r-lib.org/reference)
+
+---
+class: center, middle
+
+Like break functions, the output of all `label_*` functions is a function. All these output functions are designed to take a numeric vector (traditionally, of breaks) and return a nicely-formatted character vector.
+&lt;br/&gt;
+
+This makes it easy to use them directly as the input to a ggplot2 scale_* labels argument to automatically take the plots calculated breaks and label them with consistent style. 
+
+
+```r
+demo_continuous(txhousing$median, labels = label_dollar())
+```
+
+```
+## scale_x_continuous(labels = label_dollar())
+```
+
+![](rstudioconf2020_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+---
+class: middle, center
+
+## Changing defaults
+
+Many of the `label_*` functions are built off of the generic `label_number` function, and allow users to easily customize label formats using consistent arguments. 
+
+Users can specify a different rounding behavior (`accuracy`), or change the `big_mark` or `decimal_mark` for international styling; even add a `prefix` or a `suffix` or `scale` your numbers on the fly. 
+
+
+```r
+french_percent &lt;- label_percent(decimal.mark = ",", suffix = " %", accuracy = .1)
+french_percent(runif(3))
+```
+
+```
+## [1] "82,1 %" "5,9 %"  "68,0 %"
+```
+
+```r
+usd_to_euro &lt;- label_dollar(prefix = "", suffix = "\u20ac", scale = .86)
+usd_to_euro(100)
+```
+
+```
+## [1] "86€"
+```
+
+---
+class: left, middle
+
+
+```r
+# delightfully,s already implemented in args: date_breaks, date_labels
+filter(txhousing, city == "Houston") %&gt;% 
+ggplot() +
+  geom_line(aes(y = sales, x = date_decimal(date))) +
+  scale_x_datetime("Month-Year", breaks = breaks_width("2 year"), 
+                   labels = label_date("%b %Y"))
+```
+
+![](rstudioconf2020_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+
+
+---
+class: center, middle, inverse 
+
+# Palettes
+
+---
+class: center, middle
+
+# Color palettes 🎨
+
+scales provides a number of color palette functions that passed the number of colors you want or a range of gradient values, will return vector of colors by hex code. 
+
+```r
+# pull a list of colors from any palette
+viridis_pal()(4)
+```
+
+```
+## [1] "#440154FF" "#31688EFF" "#35B779FF" "#FDE725FF"
+```
+
+```r
+brewer_pal(type = "div", direction = -1)(4)
+```
+
+```
+## [1] "#018571" "#80CDC1" "#DFC27D" "#A6611A"
+```
+
+```r
+div_gradient_pal()(seq(0, 1, length.out = 4))
+```
+
+```
+## [1] "#2B6788" "#99A8B4" "#BBA19A" "#90503F"
+```
+
+---
+class: center, middle
+
+# Hot tip 🔥
+
+Ever wondered what colors are going to look like before you use them? 
+Try `scales::show_col()`
+
+
+```r
+show_col(viridis_pal()(4))
+```
+
+![](rstudioconf2020_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
+---
+class: center, middle
+
+## Non-color palettes
+Often you want to be able to scale elements other than color. e.g. size, alpha, shape... 
+Of course, scales handles those too!
+
+```r
+your_data &lt;- runif(5, 1, 20)
+area_pal(range = c(1, 20))(your_data)
+```
+
+```
+## [1] 61.21486 79.69243 85.35744 41.86036 60.83475
+```
+
+```r
+shape_pal()(6)
+```
+
+```
+## [1] 16 17 15  3  7  8
+```
+
+---
+class: center, middle
+
+## See these in action in `ggplot2`...
+
+```r
+# color examples...
+scale_fill_brewer()
+scale_color_grey()
+scale_color_viridis_c()
+# shape examples
+scale_shape()
+scale_shape_ordinal()
+# implement them yourself with...
+scale_color_manual()
+scale_shape_manual()
+scale_size_manual()
+# use the values as they are from your data frame with 
+scale_color_identity()
+scale_shape_identity()
+scale_size_identity()
+```
+
+---
+class: center, middle
+
+## Or, apply them to BaseR!
+Remember, while scales functions are primarily used under the hood in ggplot2, they are generic enough to be combined with any plotting system. For example, use them in combination with `grDevices::palette()`, provided with base R, to affect your base plots...
+
+---
+class: center, middle
+
+
+```r
+palette(viridis_pal()(4))
+plot(Sepal.Length ~ Sepal.Width, 
+     col = Species, pch=20, data = iris)
+```
+
+![](rstudioconf2020_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+---
+class: center, middle
+
+## Questions?
+
+**Read more about scales at [scales.r-lib.org](https://scales.r-lib.org/)**
+
+&lt;br/&gt;
+
+Slides: [danaseidel.com/rstudioconf2020](https://danaseidel.com/rstudioconf2020)
+
+Code: [github.com/dpseidel/rstudioconf2020](https://github.com/dpseidel/rstudioconf2020)
+
+@dpseidel on [Twitter](https://twitter.com/dpseidel) and [GitHub](https://github.com/dpseidel)
+
+&lt;br/&gt;
+
+👏 Shout out to the wonderful `xaringan`, `xaringanthemer`, &amp; `emo` packages which helped make these slides beautiful!
+
+
+And HUGE thank you to Hadley Wickham and other tidyverse community developers who contributed so much to the scales 1.1.0 release! 🙏
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
