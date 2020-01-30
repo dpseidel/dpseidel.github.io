@@ -78,51 +78,16 @@ class: center, middle
 
 # Transformations
 
-scales provides a number of common transformation functions (`*_trans()`) which specify functions to preform data transformations, format labels, and set correct breaks.
+scales provides a number of common transformation functions (`*_trans`) which specify functions to preform data transformations, format labels, and set correct breaks.
 
 &lt;br/&gt;
 
 For example: &lt;br/&gt;
-`log_trans()`, `sqrt_trans()`, `reverse_trans()` power the `scale_*_log10()`,
-`scale_*_sqrt()`, `scale_*_reverse()` functions in ggplot2. 
+`log_trans`, `sqrt_trans`, `reverse_trans` power the `scale_*_log10`,
+`scale_*_sqrt`, `scale_*_reverse` functions in ggplot2. 
 
-
----
-class: center, middle
-
-
-```r
-ggplot(diamonds) +
-  geom_point(aes(y = price, x = carat))
-```
-
-![](rstudioconf2020_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
-
-
----
-class: center, middle
-
-
-```r
-ggplot(diamonds) +
-  geom_point(aes(y = price, x = carat)) + 
-  scale_x_continuous(trans = log_trans()) +
-  scale_y_log10()
-```
-
-![](rstudioconf2020_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
----
-class: center, middle
-
-
-```r
-ggplot(diamonds) +
-  geom_hex(aes(y = price, x = carat)) + 
-  scale_x_log10() +
-  scale_y_log10()
-```
-
-![](rstudioconf2020_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+&lt;br/&gt;
+`scale_*_datetime`, `scale_*_date` are powered by the `time_trans` and `date_trans` functions. 
 
 ---
 class: left, middle
@@ -131,7 +96,6 @@ class: left, middle
 - `asn_trans()` : Arc-sin square root transformation.
 - `atanh_trans()` : Arc-tangent transformation.
 - `boxcox_trans()` `modulus_trans()` : Box-Cox &amp; modulus transformations.
-- `date_trans()` `time_trans()` `hms_trans()` : transformations for date, datetime, and hms classes
 - `exp_trans()` : Exponential transformation (inverse of log transformation).
 - `pseudolog_trans()` : Pseudo-log transformation
 - `probabilty_trans()`: Probability transformation
@@ -148,12 +112,28 @@ transformation functions for repeated use.
 # use trans_new to build a new transformation
 dollar_log &lt;- trans_new(
   name = "dollar_log",
-  trans = log_trans(base = 10)$trans, # extract a single element from another trans
-  inverse = function(x) 10^(x), # or write your own custom functions
+  # extract a single element from another trans
+  trans = log10_trans()$trans, 
+  # or write your own custom functions
+  inverse = function(x) 10^(x), 
   breaks = breaks_log(),
   format = label_dollar()
-  )
+)
 ```
+
+---
+class: center, middle
+
+
+```r
+ggplot(diamonds, aes(y = price, x = carat)) + 
+  geom_hex() +
+  scale_y_continuous(trans = dollar_log) +
+  scale_x_log10()
+```
+
+![](rstudioconf2020_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
+
 
 ---
 class: center, middle
@@ -174,7 +154,7 @@ rescale(runif(5), to = c(0, 50))
 ```
 
 ```
-## [1] 24.97849 16.19816 45.77471  0.00000 50.00000
+## [1] 30.069032  0.000000 10.010167 50.000000  4.351211
 ```
 
 ---
@@ -196,7 +176,7 @@ squish(c(-1, 0.5, 1, 2, NA), range = c(0, 1))
 ```
 
 ```r
-scales::discard(c(-1, 0.5, 1, 2, NA), range = c(0, 1))
+discard(c(-1, 0.5, 1, 2, NA), range = c(0, 1))
 ```
 
 ```
@@ -217,17 +197,18 @@ class: center, middle
 #### Squish can be really useful for setting the `oob` argument for a color scale with reduced limits.
 
 ```r
-ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, colour = Sepal.Length)) +
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width,
+  colour = Sepal.Length)) +
   geom_point() + 
   scale_color_continuous(limit = c(6, 8), oob = scales::squish)
 ```
 
-![](rstudioconf2020_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+![](rstudioconf2020_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
 
 ---
 class: center, middle, inverse 
 
-# Sensible Breaks for continuous scales
+# Sensible breaks for continuous scales
 
 ---
 class: left, middle
@@ -285,7 +266,7 @@ class: left, middle
 - `label_ordinal`: add ordinal suffixes (-st, -nd, -rd, -th) to numbers according to languages (e.g. English, Spanish, French).
 - `label_bytes`, `label_number_si` 
 - `label_parse`, `label_math`, `label_pvalue`
--` label_wrap`
+- `label_wrap`
 
 For a full list and descriptions, see: [scales.r-lib.org/reference](scales.r-lib.org/reference)
 
@@ -295,7 +276,7 @@ class: center, middle
 Like break functions, the output of all `label_*` functions is a function. All these output functions are designed to take a numeric vector (traditionally, of breaks) and return a nicely-formatted character vector.
 &lt;br/&gt;
 
-This makes it easy to use them directly as the input to a ggplot2 scale_* labels argument to automatically take the plots calculated breaks and label them with consistent style. 
+This makes it easy to use them directly as the input to a ggplot2 scale_* labels argument to automatically take the plot's calculated breaks and label them with consistent style. 
 
 
 ```r
@@ -306,33 +287,37 @@ demo_continuous(txhousing$median, labels = label_dollar())
 ## scale_x_continuous(labels = label_dollar())
 ```
 
-![](rstudioconf2020_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+![](rstudioconf2020_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
 ---
 class: middle, center
 
 ## Changing defaults
 
-Many of the `label_*` functions are built off of the generic `label_number` function, and allow users to easily customize label formats using consistent arguments. 
+Many of the `label_*` functions are built off of the generic `label_number` function, and allow users to customize label formats with consistent args. 
 
 Users can specify a different rounding behavior (`accuracy`), or change the `big_mark` or `decimal_mark` for international styling; even add a `prefix` or a `suffix` or `scale` your numbers on the fly. 
 
 
 ```r
-french_percent &lt;- label_percent(decimal.mark = ",", suffix = " %", accuracy = .1)
+french_percent &lt;- label_percent( 
+  decimal.mark = ",",
+  suffix = " %", # add some space maybe?
+  accuracy = .1)
 french_percent(runif(3))
 ```
 
 ```
-## [1] "82,1 %" "5,9 %"  "68,0 %"
+## [1] "96,1 %" "63,5 %" "32,9 %"
 ```
 
 ```r
-usd_to_euro &lt;- label_dollar(prefix = "", suffix = "\u20ac", scale = .86)
+usd_to_euro &lt;- label_dollar(
+  prefix = "", suffix = "\u20ac", scale = .91)
 usd_to_euro(100)
 ```
 
 ```
-## [1] "86€"
+## [1] "91€"
 ```
 
 ---
@@ -340,15 +325,18 @@ class: left, middle
 
 
 ```r
-# delightfully,s already implemented in args: date_breaks, date_labels
-filter(txhousing, city == "Houston") %&gt;% 
-ggplot() +
+filter(txhousing, city == "Houston") %&gt;%
+  ggplot() +
   geom_line(aes(y = sales, x = date_decimal(date))) +
-  scale_x_datetime("Month-Year", breaks = breaks_width("2 year"), 
-                   labels = label_date("%b %Y"))
+  scale_x_datetime("Month-Year",
+    breaks = breaks_width("2 year"),
+    labels = label_date("%b %Y")
+ # delightfully, this functionality is already implemented x
+ #  in scale_*_date args: date_breaks, date_labels
+  )
 ```
 
-![](rstudioconf2020_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+![](rstudioconf2020_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -363,8 +351,8 @@ class: center, middle
 
 scales provides a number of color palette functions that passed the number of colors you want or a range of gradient values, will return vector of colors by hex code. 
 
+
 ```r
-# pull a list of colors from any palette
 viridis_pal()(4)
 ```
 
@@ -401,7 +389,7 @@ Try `scales::show_col()`
 show_col(viridis_pal()(4))
 ```
 
-![](rstudioconf2020_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
+![](rstudioconf2020_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
 ---
 class: center, middle
 
@@ -415,7 +403,7 @@ area_pal(range = c(1, 20))(your_data)
 ```
 
 ```
-## [1] 61.21486 79.69243 85.35744 41.86036 60.83475
+## [1] 79.46603 73.35552 60.22752 85.16348 49.28410
 ```
 
 ```r
@@ -443,7 +431,7 @@ scale_shape_ordinal()
 scale_color_manual()
 scale_shape_manual()
 scale_size_manual()
-# use the values as they are from your data frame with 
+# use the values as they are from your data frame with
 scale_color_identity()
 scale_shape_identity()
 scale_size_identity()
@@ -461,11 +449,11 @@ class: center, middle
 
 ```r
 palette(viridis_pal()(4))
-plot(Sepal.Length ~ Sepal.Width, 
-     col = Species, pch=20, data = iris)
+plot(Sepal.Length ~ Sepal.Width,
+  col = Species, pch = 20, data = iris)
 ```
 
-![](rstudioconf2020_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+![](rstudioconf2020_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
 
 ---
 class: center, middle
