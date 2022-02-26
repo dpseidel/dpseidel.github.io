@@ -13,7 +13,7 @@ and on an associated [website](http://dpseidel.github.io/MovEco-R-Workshop). I s
 as they see fit, and I would be delighted to hear from anyone with suggestions regarding organization or new topics that are of interest. 
 
 
-## Recent Graduate Student Instruction:
+## Graduate Student Instruction Experience:
 ### [ESPM-288](https://espm-288.carlboettiger.info): Reproducible and Collaborative Data Science
 
 - Teaching: Spring 2018

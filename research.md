@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Recent Projects & Experience
+title: Graduate Projects & Experience
 ---
 
 My doctoral research focused on the movement of large mammals and their diseases. My primary system of investigation is anthrax in populations of African elephant and zebra within Etosha National Park, Namibia. I've also explored the movement behavior of black rhinos and modeled the spatial risk 
